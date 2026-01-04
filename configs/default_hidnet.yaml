@@ -1,0 +1,45 @@
+# ------------------------
+# Data settings
+# ------------------------
+batch_size: 4
+shuffle: true
+validation_split: 0.1
+
+# ------------------------
+# Training settings
+# ------------------------
+learning_rate: 0.0001
+optimizer: adam
+
+# ------------------------
+# Learning rate scheduler
+# ------------------------
+lr_schedule:
+  type: CosineAnnealingLR
+  T_max: 400        # Number of epochs for training
+  eta_min: 0.00006  # Minimum learning rate
+
+# ------------------------
+# Loss settings
+# ------------------------
+loss_function: combined      # options: mse, ssim, combined
+loss_alpha: 0.80             # prioritize accurate depth
+beta: 0.20                   # slight structural guidance
+
+# ------------------------
+# Model settings
+# ------------------------
+model_name: hidnet
+in_channels: 1
+out_channels: 1
+base_filters: 32
+alpha: 0.3
+dropout: 0.2
+
+camera_intrinsics: [2.7674498064097711e+03, 2.7675590254576309e+03, 3.8258601201085355e+02, 2.0311869177718791e+02]
+
+# ------------------------
+# Paths
+# ------------------------
+data_dir: data/data_pt
+checkpoint_dir: checkpoints
